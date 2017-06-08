@@ -4,12 +4,19 @@ os:
   - linux
 
 env:
-  - ARCH=x86
-  - ARCH=x86_64
+  - ARCH=x86 BUILD=release
+  - ARCH=x86 BUILD=debug
+  - ARCH=x86_64 BUILD=release
+  - ARCH=x86_64 BUILD=debug
+  
+matrix:
+  exclude:
+    - env: ARCH=x86 BUILD=release
 
 sudo: true
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$ARCH" == "x86" ]]; then sudo apt-get install gcc-multilib; fi
 script:
-    - dub build --compiler=${DC} --arch=${ARCH}
-    - file travis-test
+  - dub build --compiler=${DC} --arch=${ARCH} --build=${BUILD}
+  - file travis-test
+  - ls -lh travis-test
