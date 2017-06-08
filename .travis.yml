@@ -11,7 +11,7 @@ env:
   
 matrix:
   exclude:
-    - env: ARCH=x86 BUILD=release
+    - env: ARCH=x86
 
 sudo: true
 before_script:
