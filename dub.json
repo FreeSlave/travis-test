@@ -1,9 +1,21 @@
 {
 	"name": "travis-test",
+	"targetType" : "executable",
 	"authors": [
 		"Roman Chistokhodov"
 	],
 	"description": "A minimal D application.",
 	"copyright": "Copyright © 2017, Roman Chistokhodov",
-	"license": "MIT"
+	"license": "MIT",
+	"configurations": [
+		{
+			"name": "default",
+		},
+		{
+			"name": "x11",
+			"dependencies": {
+				"x11": "~>1.0.13"
+			}
+		}
+	]
 }
